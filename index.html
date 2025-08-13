@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>OlhoNoConcurso — Antecipe seus resultados com IA</title>
+  </head>
+  <body class="bg-white text-gray-900 antialiased">
+    <div id="app" class="min-h-screen flex flex-col">
+      <!-- Header fixo, clean -->
+      <header class="fixed inset-x-0 top-0 z-50 bg-white/80 backdrop-blur border-b border-gray-200">
+        <nav class="max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div class="flex items-center justify-between h-16">
+            <!-- Logo -->
+            <a href="#" class="text-2xl font-light tracking-tight select-none">OlhoNoConcurso</a>
+
+            <!-- Desktop actions -->
+            <div class="hidden md:flex items-center gap-3">
+              <a href="#" class="text-sm text-gray-600 hover:text-gray-900 transition">Ajuda</a>
+              <a href="#" class="inline-flex items-center rounded-full border border-gray-300 px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:border-gray-400 transition">Entrar / Cadastrar</a>
+            </div>
+
+            <!-- Mobile hamburger -->
+            <button
+              data-collapse-toggle="mobile-menu"
+              type="button"
+              class="md:hidden inline-flex items-center justify-center rounded-lg p-2 text-gray-600 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200"
+              aria-controls="mobile-menu"
+              aria-expanded="false"
+            >
+              <span class="sr-only">Abrir menu</span>
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+            </button>
+          </div>
+          <!-- Mobile menu -->
+          <div id="mobile-menu" class="hidden md:hidden pb-4">
+            <div class="space-y-2 pt-2">
+              <a href="#" class="block rounded-lg px-3 py-2 text-sm text-gray-700 hover:bg-gray-100">Ajuda</a>
+              <a href="#" class="block rounded-lg px-3 py-2 text-sm text-gray-700 border border-gray-200 hover:bg-gray-100">Entrar / Cadastrar</a>
+            </div>
+          </div>
+        </nav>
+      </header>
+
+      <!-- Hero -->
+      <main class="flex-1">
+        <section class="relative pt-28 pb-20 sm:pt-32 sm:pb-24">
+          <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h1 class="text-4xl sm:text-5xl md:text-6xl font-semibold tracking-tight">
+              OlhoNoConcurso é uma plataforma inovadora que utiliza inteligência artificial para ajudar candidatos de concursos públicos a prever seus resultados antes da divulgação oficial.
+            </h1>
+            <p class="mt-6 text-base sm:text-lg md:text-xl leading-relaxed text-gray-600">
+              Funciona assim: o usuário escolhe o concurso que está fazendo, insere suas respostas da prova, e o sistema, com base em dados coletivos e modelos estatísticos avançados de IA, gera uma previsão personalizada do desempenho e classificação provável. Isso ajuda os candidatos a terem uma ideia antecipada do seu resultado, reduzindo a ansiedade e facilitando o planejamento dos próximos passos na preparação, tudo isso de forma rápida, prática e gratuita.
+            </p>
+
+            <div class="mt-10 flex items-center justify-center gap-3">
+              <a
+                href="#"
+                class="inline-flex items-center rounded-full bg-gray-900 px-6 sm:px-8 py-3 text-sm sm:text-base font-medium text-white shadow-sm hover:bg-gray-800 hover:shadow-md focus:outline-none focus:ring-2 focus:ring-gray-300 transition"
+              >
+                Comece grátis
+              </a>
+            </div>
+
+            <!-- Minimal card for visual focus -->
+            <div class="mt-14">
+              <div class="mx-auto max-w-3xl rounded-2xl border border-gray-200 bg-white shadow-sm p-6 sm:p-8">
+                <p class="text-sm sm:text-base text-gray-600">
+                  Zero custo. Sem pegadinhas. Ideal para acompanhar seu desempenho ao longo dos editais.
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+      </main>
+
+      <!-- Footer -->
+      <footer class="border-t border-gray-200">
+        <div class="max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8 py-10 text-center">
+          <nav class="flex justify-center gap-6 text-sm text-gray-600">
+            <a href="#" class="hover:text-gray-900 transition">Privacidade</a>
+            <a href="#" class="hover:text-gray-900 transition">Termos</a>
+            <a href="#" class="hover:text-gray-900 transition">Contato</a>
+          </nav>
+          <p class="mt-4 text-xs text-gray-500">© 2025 OlhoNoConcurso. Todos os direitos reservados.</p>
+        </div>
+      </footer>
+    </div>
+
+    <!-- Flowbite/Tailwind entry -->
+    <script type="module" src="/src/main.js"></script>
+  </body>
+  </html>
