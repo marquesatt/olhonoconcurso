@@ -177,22 +177,22 @@ export default function Home() {
           </Reveal>
           <Reveal>
           <p className="mt-3 max-w-3xl opacity-80 leading-relaxed">
-            A incerteza após a prova consome energia e atrasa seu plano. Com o OlhoNoConcurso, você transforma ansiedade em estratégia: estime sua classificação com base em dados reais da comunidade e defina o próximo passo com confiança.
+            Não perca tempo com a incerteza após a prova. Com o OlhoNoConcurso, veja sua classificação baseada em dados reais e fique à frente da concorrência.
           </p>
           </Reveal>
           <div className="mt-8 grid md:grid-cols-3 gap-6">
             {[
               {
                 title: "Ansiedade sob controle",
-                desc: "Um termômetro imediato do seu desempenho — agora você sabe onde está.",
+                desc: "Descubra na hora como você se saiu: sem esperar gabarito, sem perder tempo.",
               },
               {
                 title: "Planejamento eficiente",
-                desc: "Decida rápido: ajustar a estratégia, mudar o foco ou acelerar para a próxima prova.",
+                desc: "Saiba o que fazer em seguida: ajustar a estratégia, focar no que importa ou já partir pra próxima prova.",
               },
               {
                 title: "IA que entrega",
-                desc: "Modelos que identificam padrões coletivos para deduzir o gabarito provável com alta precisão.",
+                desc: "Nossa inteligência artificial analisa padrões de todos os concorrentes e prevê o gabarito com precisão e sem achismos",
               },
             ].map((b) => (
               <Reveal key={b.title}>
@@ -219,7 +219,7 @@ export default function Home() {
             </Reveal>
             <div className="mt-8 grid sm:grid-cols-2 md:grid-cols-4 gap-6">
               {[ 
-                {icon: <Inbox className="h-7 w-7" />, title: "Coleta colaborativa", desc: "Candidatos inserem respostas logo após a prova."},
+                {icon: <Inbox className="h-7 w-7" />, title: "Coleta colaborativa", desc: "Candidatos inserem suas respostas logo após a prova."},
                 {icon: <LineChart className="h-7 w-7" />, title: "Análise por IA", desc: "IA identifica padrões consistentes e deduz o gabarito provável."},
                 {icon: <Check className="h-7 w-7" />, title: "Previsão de resultado", desc: "Você recebe a classificação estimada e sua posição relativa."},
                 {icon: <ShieldCheck className="h-7 w-7" />, title: "Vantagem competitiva", desc: "Aja com antecedência e ganhe tempo frente aos concorrentes."},
@@ -305,9 +305,9 @@ export default function Home() {
       </Reveal>
             <div className="mt-8 grid sm:grid-cols-2 md:grid-cols-3 gap-6">
               {[
-    { name: "Ana", role: "Aprovada TJ-SP", text: "Descobri que fui bem depois de terminar a prova e nem precisei esperar a banca liberar o gabarito preliminar.", initials: "AN" },
-    { name: "Bruno", role: "Candidato PC-DF", text: "Assim que terminei a prova, joguei no site. Ele disse que eu tinha acertado 70%. Quando o gabarito oficial saiu, percebi que o site tinha acertado 98% das questões.", initials: "BR" },
-    { name: "Carla", role: "TRT 2ª Região", text: "A previsão do site é um absurdo, não sei como isso funciona, mas a IA deve ser muito poderosa.", initials: "CA" },
+    { name: "Maria", role: "Aprovada TJ-SP", text: "Descobri que fui bem assim que terminei a prova, sem precisar esperar a banca liberar o gabarito preliminar.", initials: "AN" },
+    { name: "Bruno", role: "Candidato PC-DF", text: "Terminei a prova cheio de dúvidas, mas o site me mostrou que tinha acertado muito mais do que esperava. Foi um alívio imediato!", initials: "BR" },
+    { name: "Carla", role: "TRT 2ª Região", text: "A previsão do site é surreal, não sei como funciona, mas a IA é realmente poderosa.", initials: "CA" },
               ].map((t) => (
         <Reveal key={t.name}>
                   <Card className="soft-glow">
@@ -347,59 +347,60 @@ export default function Home() {
         </section>
 
         {/* FAQ */}
-  <section id="faq" className="mx-auto max-w-4xl container-shell section-space">
+  <section id="faq" className="container-shell section-space lg:pb-12">
           <Reveal className="inline-flex items-center gap-2 text-xs uppercase tracking-wider text-muted-foreground">
             <span className="h-1 w-6 rounded bg-primary" />
             Transparência
           </Reveal>
           <Reveal>
-            <h2 className="mt-3 text-2xl md:text-3xl font-semibold">Dúvidas frequentes</h2>
+            <h2 className="mt-3 text-2xl md:text-3xl lg:text-4xl font-semibold">Dúvidas frequentes</h2>
           </Reveal>
           <Accordion type="single" collapsible className="mt-6">
             <AccordionItem value="item-1">
-              <AccordionTrigger>Como a IA estima o gabarito?</AccordionTrigger>
-              <AccordionContent>
-                Cruzamos respostas coletivas para identificar padrões consistentes, ponderamos por confiabilidade e simulamos cenários. O resultado é um gabarito provável que serve como base para sua classificação estimada.
+              <AccordionTrigger className="text-base lg:text-lg">Como a IA estima o gabarito?</AccordionTrigger>
+              <AccordionContent className="text-sm lg:text-base leading-relaxed">
+                Cruzamos as respostas da comunidade para identificar padrões consistentes, ponderamos por confiabilidade e simulamos cenários. O resultado é um gabarito provável que serve de base para sua classificação estimada.
               </AccordionContent>
             </AccordionItem>
             <AccordionItem value="item-2">
-              <AccordionTrigger>Qual a precisão?</AccordionTrigger>
-              <AccordionContent>
-                Em nossos testes iniciais, a precisão média ficou acima de 90% em provas objetivas com alta participação. A precisão aumenta conforme mais candidatos contribuem.
+              <AccordionTrigger className="text-base lg:text-lg">Qual a precisão?</AccordionTrigger>
+              <AccordionContent className="text-sm lg:text-base leading-relaxed">
+                Nos testes iniciais, a precisão média ficou acima de 90% em provas objetivas com alta participação. Quanto mais gente contribui, mais precisa fica.
               </AccordionContent>
             </AccordionItem>
             <AccordionItem value="item-3">
-              <AccordionTrigger>Meus dados ficam seguros?</AccordionTrigger>
-              <AccordionContent>
-                Sim. Armazenamos respostas de forma agregada e anônima, sem dados pessoais. Você controla o que compartilha.
+              <AccordionTrigger className="text-base lg:text-lg">Meus dados ficam seguros?</AccordionTrigger>
+              <AccordionContent className="text-sm lg:text-base leading-relaxed">
+                Sim. As respostas são armazenadas de forma agregada e anônima. Não coletamos dados pessoais sem consentimento, e você controla o que compartilha.
               </AccordionContent>
             </AccordionItem>
           </Accordion>
         </section>
 
         {/* CTA Final */}
-  <section className="container-shell section-space">
+        <section className="container-shell section-space">
           <Reveal>
-          <Card className="bg-brand-gradient soft-glow">
-            <CardHeader>
-              <CardTitle className="text-2xl md:text-3xl">Pare de sofrer na espera</CardTitle>
-              <CardDescription className="text-[color:var(--brand-foreground)]/90">
-                Tenha clareza em minutos. Experimente grátis e ganhe vantagem competitiva agora.
-              </CardDescription>
-            </CardHeader>
-            <CardContent>
-              <div className="flex flex-col sm:flex-row gap-3">
-                <Button size="lg" variant="secondary" className="text-foreground soft-glow">Experimente grátis</Button>
-                <Button size="lg" variant="outline" className="bg-transparent text-[color:var(--brand-foreground)] border-[color:var(--brand-foreground)]/60 hover:bg-[color:var(--brand-foreground)]/10">Descubra seu resultado agora</Button>
-              </div>
-            </CardContent>
-          </Card>
+            <Card className="bg-brand-gradient soft-glow">
+              <CardHeader>
+                <CardTitle className="text-2xl md:text-3xl">Pare de sofrer na espera</CardTitle>
+                <CardDescription className="text-[color:var(--brand-foreground)]/90">
+                  Tenha clareza em minutos. Experimente grátis e garanta sua vantagem agora.
+                </CardDescription>
+              </CardHeader>
+              <CardContent>
+                <div className="flex flex-col sm:flex-row gap-3">
+                  <Button size="lg" variant="secondary" className="text-foreground soft-glow">Experimente grátis</Button>
+                  <Button size="lg" variant="outline" className="bg-transparent text-[color:var(--brand-foreground)] border-[color:var(--brand-foreground)]/60 hover:bg-[color:var(--brand-foreground)]/10">Descubra seu resultado agora</Button>
+                </div>
+              </CardContent>
+            </Card>
           </Reveal>
         </section>
+
       </main>
 
       <footer className="border-t">
-  <div className="container-shell h-16 flex items-center justify-between text-sm">
+        <div className="container-shell h-16 flex items-center justify-between text-sm">
           <p className="opacity-70">© {new Date().getFullYear()} OlhoNoConcurso</p>
           <div className="flex items-center gap-4">
             <a href="/privacidade" className="hover:underline">Privacidade</a>
