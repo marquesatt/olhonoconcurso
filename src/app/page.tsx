@@ -66,8 +66,8 @@ export default function Home() {
           </Link>
           <nav aria-label="Primária" className="hidden lg:flex items-center gap-6">
             <a href="#como-funciona" className="opacity-80 hover:opacity-100 transition">Como funciona</a>
-            <a href="#beneficios" className="opacity-80 hover:opacity-100 transition">Benefícios</a>
-            <a href="#depoimentos" className="opacity-80 hover:opacity-100 transition">Prova social</a>
+            <a href="#beneficios" className="opacity-80 hover:opacity-100 transition">Vantagens</a>
+            <a href="#depoimentos" className="opacity-80 hover:opacity-100 transition">Resultados reais</a>
             <a href="#faq" className="opacity-80 hover:opacity-100 transition">FAQ</a>
           </nav>
           <div className="flex items-center gap-2">
@@ -113,10 +113,10 @@ export default function Home() {
                   <a href="#como-funciona">Como funciona</a>
                 </DropdownMenuItem>
                 <DropdownMenuItem asChild>
-                  <a href="#beneficios">Benefícios</a>
+                  <a href="#beneficios">Vantagens</a>
                 </DropdownMenuItem>
                 <DropdownMenuItem asChild>
-                  <a href="#depoimentos">Prova social</a>
+                  <a href="#depoimentos">Resultados reais</a>
                 </DropdownMenuItem>
                 <DropdownMenuItem asChild>
                   <a href="#faq">FAQ</a>
@@ -137,12 +137,12 @@ export default function Home() {
           <div className="grid-overlay" aria-hidden="true" />
           <div className="container-shell py-14 md:py-20 lg:py-24 grid md:grid-cols-2 gap-8 md:gap-10 items-center">
             <div>
-              <Badge className="mb-4" variant="secondary">Gabarito colaborativo inteligente</Badge>
+              <Badge className="mb-4" variant="secondary">Gabarito Preliminar com Inteligência Artificial</Badge>
               <h1 className="text-4xl md:text-5xl font-extrabold tracking-tight leading-tight">
-                Descubra seu resultado antes do gabarito oficial
+                Descubra seu resultado antes de todo mundo
               </h1>
               <p className="mt-4 text-lg opacity-80 max-w-prose">
-                Nossa inteligência artificial prevê seu desempenho antes do gabarito oficial, reduz a ansiedade e coloca você à frente da concorrência.
+                Nossa inteligência artificial prevê seu desempenho antes de ser divulgado o gabarito, reduz a ansiedade e coloca você à frente da concorrência.
               </p>
               <div className="mt-6 flex flex-col sm:flex-row gap-3">
                 <Button size="lg" className="soft-glow w-full sm:w-auto">Descubra seu resultado agora</Button>
@@ -254,22 +254,37 @@ export default function Home() {
           </Reveal>
           <div className="mt-8 grid sm:grid-cols-2 md:grid-cols-3 gap-6">
             {[
-              { title: "Ansiedade sob controle", desc: "Veja um panorama claro do seu desempenho minutos após a prova." },
-              { title: "Planejamento com dados", desc: "Defina seus próximos passos com base em evidências, não em achismos." },
-              { title: "Vantagem competitiva real", desc: "Aja antes dos concorrentes com informação qualificada." },
+              {
+                title: "Ansiedade sob controle",
+                badge: "Tranquilidade",
+                desc: "Saiba se foi bem ainda no dia da prova e siga em paz.",
+                bullets: ["Previsão em minutos", "Sem esperar gabarito", "Menos incerteza"],
+              },
+              {
+                title: "Planejamento com dados",
+                badge: "Estratégia",
+                desc: "Decida com base em números: revisar, seguir para outro edital ou acelerar.",
+                bullets: ["Estimativa de nota e posição", "Comparação com a turma", "Próximos passos claros"],
+              },
+              {
+                title: "Vantagem competitiva real",
+                badge: "Vantagem",
+                desc: "Ganhe tempo e priorize melhor que a concorrência.",
+                bullets: ["Ação antecipada", "Foco no que mais rende", "Aprendizado rápido pós-prova"],
+              },
             ].map((b) => (
               <Reveal key={b.title}>
                 <Card className="group transition hover:-translate-y-0.5 hover:shadow">
                   <CardHeader>
-                    <Badge variant="outline">Valor real</Badge>
+                    <Badge variant="outline">{b.badge}</Badge>
                     <CardTitle className="mt-2">{b.title}</CardTitle>
                     <CardDescription>{b.desc}</CardDescription>
                   </CardHeader>
                   <CardContent>
                     <ul className="text-sm opacity-80 list-disc pl-5 space-y-1">
-                      <li>Feedback imediato</li>
-                      <li>Interface simples e objetiva</li>
-                      <li>Resultados consistentes</li>
+                      {b.bullets.map((item) => (
+                        <li key={item}>{item}</li>
+                      ))}
                     </ul>
                   </CardContent>
                 </Card>
@@ -283,16 +298,16 @@ export default function Home() {
           <div className="container-shell section-space">
       <Reveal className="inline-flex items-center gap-2 text-xs uppercase tracking-wider text-muted-foreground">
         <span className="h-1 w-6 rounded bg-accent" />
-        Prova social
+        Resultados reais
       </Reveal>
       <Reveal>
-        <h2 className="mt-3 text-2xl md:text-3xl font-semibold">O que dizem</h2>
+        <h2 className="mt-3 text-2xl md:text-3xl font-semibold">Evidências de quem já usou</h2>
       </Reveal>
             <div className="mt-8 grid sm:grid-cols-2 md:grid-cols-3 gap-6">
               {[
-    { name: "Ana", role: "Aprovada TJ-SP", text: "Descobri que estava bem colocada e foquei no próximo edital.", initials: "AN" },
-    { name: "Bruno", role: "Candidato PC-DF", text: "Acalmou minha ansiedade no dia seguinte da prova.", initials: "BR" },
-    { name: "Carla", role: "TRT 2ª Região", text: "A estimativa ficou muito próxima do resultado oficial!", initials: "CA" },
+    { name: "Ana", role: "Aprovada TJ-SP", text: "Descobri que fui bem depois de terminar a prova e nem precisei esperar a banca liberar o gabarito preliminar.", initials: "AN" },
+    { name: "Bruno", role: "Candidato PC-DF", text: "Assim que terminei a prova, joguei no site. Ele disse que eu tinha acertado 70%. Quando o gabarito oficial saiu, percebi que o site tinha acertado 98% das questões.", initials: "BR" },
+    { name: "Carla", role: "TRT 2ª Região", text: "A previsão do site é um absurdo, não sei como isso funciona, mas a IA deve ser muito poderosa.", initials: "CA" },
               ].map((t) => (
         <Reveal key={t.name}>
                   <Card className="soft-glow">
