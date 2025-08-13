@@ -28,7 +28,15 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog";
 import { useEffect, useMemo, useState } from "react";
-import { Check, Clock, LineChart, ShieldCheck } from "lucide-react";
+import { Check, Clock, LineChart, ShieldCheck, Menu, Inbox } from "lucide-react";
+import { Reveal } from "@/components/reveal";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
 
 export default function Home() {
   const [mounted, setMounted] = useState(false);
@@ -51,12 +59,12 @@ export default function Home() {
   return (
     <TooltipProvider delayDuration={150}>
       <header className="sticky top-0 z-30 w-full backdrop-blur supports-[backdrop-filter]:bg-background/75 bg-background/60 border-b">
-        <div className="mx-auto max-w-6xl px-4 md:px-6 h-16 flex items-center justify-between">
-          <Link href="#" className="flex items-center gap-2 font-semibold">
+  <div className="container-shell h-16 flex items-center justify-between gap-2">
+          <Link href="/" aria-current="page" className="flex items-center gap-2 font-semibold">
             <Image src="/logo.svg" alt="OlhoNoConcurso" width={28} height={28} />
             <span className="text-lg">OlhoNoConcurso</span>
           </Link>
-          <nav aria-label="Primária" className="hidden md:flex items-center gap-6">
+          <nav aria-label="Primária" className="hidden lg:flex items-center gap-6">
             <a href="#como-funciona" className="opacity-80 hover:opacity-100 transition">Como funciona</a>
             <a href="#beneficios" className="opacity-80 hover:opacity-100 transition">Benefícios</a>
             <a href="#depoimentos" className="opacity-80 hover:opacity-100 transition">Prova social</a>
@@ -71,9 +79,9 @@ export default function Home() {
             </Tooltip>
             <Dialog>
               <DialogTrigger asChild>
-                <Button className="shadow-sm">Experimente grátis</Button>
+                <Button className="shadow-sm h-9 px-3 text-sm sm:h-10 sm:px-4 sm:text-base">Experimente grátis</Button>
               </DialogTrigger>
-              <DialogContent aria-describedby="trial-desc">
+              <DialogContent aria-describedby="trial-desc" className="w-[95vw] sm:max-w-[425px]">
                 <DialogHeader>
                   <DialogTitle>Solicitar acesso ao MVP</DialogTitle>
                   <DialogDescription id="trial-desc">
@@ -93,6 +101,32 @@ export default function Home() {
                 </form>
               </DialogContent>
             </Dialog>
+            {/* Mobile/Tablet menu */}
+            <DropdownMenu>
+              <DropdownMenuTrigger asChild>
+                <Button variant="ghost" size="icon" className="lg:hidden" aria-label="Abrir menu">
+                  <Menu className="h-5 w-5" />
+                </Button>
+              </DropdownMenuTrigger>
+              <DropdownMenuContent align="end" className="min-w-56">
+                <DropdownMenuItem asChild>
+                  <a href="#como-funciona">Como funciona</a>
+                </DropdownMenuItem>
+                <DropdownMenuItem asChild>
+                  <a href="#beneficios">Benefícios</a>
+                </DropdownMenuItem>
+                <DropdownMenuItem asChild>
+                  <a href="#depoimentos">Prova social</a>
+                </DropdownMenuItem>
+                <DropdownMenuItem asChild>
+                  <a href="#faq">FAQ</a>
+                </DropdownMenuItem>
+                <DropdownMenuSeparator />
+                <DropdownMenuItem asChild>
+                  <button type="button" className="w-full text-left opacity-80">Entrar (em breve)</button>
+                </DropdownMenuItem>
+              </DropdownMenuContent>
+            </DropdownMenu>
           </div>
         </div>
       </header>
@@ -101,18 +135,20 @@ export default function Home() {
         {/* Hero */}
         <section className="relative overflow-hidden hero-surface">
           <div className="grid-overlay" aria-hidden="true" />
-          <div className="mx-auto max-w-6xl px-4 md:px-6 py-16 md:py-24 grid md:grid-cols-2 gap-10 items-center">
+          <div className="container-shell py-14 md:py-20 lg:py-24 grid md:grid-cols-2 gap-8 md:gap-10 items-center">
             <div>
               <Badge className="mb-4" variant="secondary">Gabarito colaborativo inteligente</Badge>
               <h1 className="text-4xl md:text-5xl font-extrabold tracking-tight leading-tight">
-                Antecipe seu resultado com IA — antes do gabarito oficial
+                Descubra seu resultado antes do gabarito oficial
               </h1>
-              <p className="mt-4 text-lg opacity-85 max-w-prose">
-                Diga adeus à incerteza pós-prova. Nossa IA transforma respostas da comunidade em uma classificação estimada confiável, para você decidir o próximo passo com calma e estratégia.
+              <p className="mt-4 text-lg opacity-80 max-w-prose">
+                Nossa inteligência artificial prevê seu desempenho antes do gabarito oficial, reduz a ansiedade e coloca você à frente da concorrência.
               </p>
               <div className="mt-6 flex flex-col sm:flex-row gap-3">
-                <Button size="lg" className="soft-glow">Descubra seu resultado agora</Button>
-                <Button size="lg" variant="outline" className="border-2">Ganhe vantagem competitiva</Button>
+                <Button size="lg" className="soft-glow w-full sm:w-auto">Descubra seu resultado agora</Button>
+                <Button size="lg" variant="outline" className="border-2 w-full sm:w-auto" asChild>
+                  <a href="#como-funciona">Saiba Como Funciona</a>
+                </Button>
               </div>
               <div className="mt-6 flex items-center gap-3 text-sm opacity-80">
                 <Clock className="h-4 w-4" />
@@ -120,7 +156,7 @@ export default function Home() {
               </div>
             </div>
             <div className="relative">
-              <div className="aspect-[16/10] rounded-xl border bg-gradient-to-br from-indigo-50 to-violet-50 dark:from-indigo-900/20 dark:to-violet-900/20 grid place-items-center soft-glow">
+              <div className="aspect-[16/10] rounded-xl border bg-brand-surface grid place-items-center soft-glow">
                 <div className="text-center p-6">
           <Image src="/hero-illustration.svg" alt="IA analisando respostas de concursos" width={480} height={300} className="mx-auto" priority />
                   <p className="mt-2 text-sm opacity-70">Preview da análise por IA</p>
@@ -131,180 +167,228 @@ export default function Home() {
         </section>
 
         {/* Problema/Solução */}
-        <section className="mx-auto max-w-6xl px-4 md:px-6 py-12 md:py-20" aria-labelledby="problema-solucao">
-          <h2 id="problema-solucao" className="text-2xl md:text-3xl font-semibold">Menos espera. Mais clareza.</h2>
-          <p className="mt-3 max-w-3xl opacity-85 leading-relaxed">
-            A espera pelo gabarito oficial aumenta o estresse e atrasa decisões. O OlhoNoConcurso coleta respostas da comunidade e, com IA, estima seu desempenho para que você planeje com confiança ainda no pós-prova.
+  <section className="container-shell section-space" aria-labelledby="problema-solucao">
+          <Reveal className="inline-flex items-center gap-2 text-xs uppercase tracking-wider text-muted-foreground">
+            <span className="h-1 w-6 rounded bg-primary" />
+            Por que isso importa
+          </Reveal>
+          <Reveal>
+            <h2 id="problema-solucao" className="mt-3 text-2xl md:text-3xl font-semibold">Menos espera. Decisões melhores.</h2>
+          </Reveal>
+          <Reveal>
+          <p className="mt-3 max-w-3xl opacity-80 leading-relaxed">
+            A incerteza após a prova consome energia e atrasa seu plano. Com o OlhoNoConcurso, você transforma ansiedade em estratégia: estime sua classificação com base em dados reais da comunidade e defina o próximo passo com confiança.
           </p>
+          </Reveal>
           <div className="mt-8 grid md:grid-cols-3 gap-6">
             {[
               {
-                title: "Redução de ansiedade",
-                desc: "Um termômetro imediato do seu desempenho, sem esperar o gabarito.",
+                title: "Ansiedade sob controle",
+                desc: "Um termômetro imediato do seu desempenho — agora você sabe onde está.",
               },
               {
                 title: "Planejamento eficiente",
-                desc: "Decida rápido: seguir estudando, mudar a estratégia ou focar na próxima prova.",
+                desc: "Decida rápido: ajustar a estratégia, mudar o foco ou acelerar para a próxima prova.",
               },
               {
-                title: "Diferencial de IA",
-                desc: "Modelos que identificam padrões coletivos e deduzem o gabarito provável com precisão.",
+                title: "IA que entrega",
+                desc: "Modelos que identificam padrões coletivos para deduzir o gabarito provável com alta precisão.",
               },
             ].map((b) => (
-              <Card key={b.title} className="transition hover:-translate-y-0.5 hover:shadow-md">
-                <CardHeader>
-                  <CardTitle>{b.title}</CardTitle>
-                  <CardDescription>{b.desc}</CardDescription>
-                </CardHeader>
-              </Card>
+              <Reveal key={b.title}>
+                <Card className="transition hover:-translate-y-0.5 hover:shadow-md">
+                  <CardHeader>
+                    <CardTitle>{b.title}</CardTitle>
+                    <CardDescription>{b.desc}</CardDescription>
+                  </CardHeader>
+                </Card>
+              </Reveal>
             ))}
           </div>
         </section>
 
         {/* Como Funciona */}
         <section id="como-funciona" className="bg-[var(--color-background)] border-t">
-          <div className="mx-auto max-w-6xl px-4 md:px-6 py-12 md:py-20">
-      <h2 className="text-2xl md:text-3xl font-semibold">Como funciona</h2>
-            <div className="mt-8 grid md:grid-cols-4 gap-6">
+          <div className="container-shell section-space">
+            <Reveal className="inline-flex items-center gap-2 text-xs uppercase tracking-wider text-muted-foreground">
+              <span className="h-1 w-6 rounded bg-accent" />
+              Em 4 passos simples
+            </Reveal>
+            <Reveal>
+              <h2 className="mt-3 text-2xl md:text-3xl font-semibold">Como funciona</h2>
+            </Reveal>
+            <div className="mt-8 grid sm:grid-cols-2 md:grid-cols-4 gap-6">
               {[ 
-                {icon: 
-                  <Image src="/icons/collect.svg" alt="Coleta" width={28} height={28} />, title: "Coleta colaborativa", desc: "Candidatos inserem respostas logo após a prova."},
-                {icon: <LineChart className="h-7 w-7" />, title: "Análise por IA", desc: "IA identifica padrões e deduz o gabarito provável."},
-                {icon: <Check className="h-7 w-7" />, title: "Previsão de resultado", desc: "Classificação estimada e posição relativa."},
-                {icon: <ShieldCheck className="h-7 w-7" />, title: "Vantagem competitiva", desc: "Informações antecipadas para decidir melhor."},
+                {icon: <Inbox className="h-7 w-7" />, title: "Coleta colaborativa", desc: "Candidatos inserem respostas logo após a prova."},
+                {icon: <LineChart className="h-7 w-7" />, title: "Análise por IA", desc: "IA identifica padrões consistentes e deduz o gabarito provável."},
+                {icon: <Check className="h-7 w-7" />, title: "Previsão de resultado", desc: "Você recebe a classificação estimada e sua posição relativa."},
+                {icon: <ShieldCheck className="h-7 w-7" />, title: "Vantagem competitiva", desc: "Aja com antecedência e ganhe tempo frente aos concorrentes."},
               ].map((s, i) => (
-        <Card key={i} className="h-full soft-glow">
-                  <CardHeader>
-                    <div className="h-10 w-10 rounded-md bg-neutral-100 dark:bg-neutral-800 grid place-items-center">
-                      {s.icon}
-                    </div>
-                    <CardTitle className="mt-2 text-lg">{s.title}</CardTitle>
-                    <CardDescription>{s.desc}</CardDescription>
-                  </CardHeader>
-                </Card>
+                <Reveal key={i}>
+                  <Card className="h-full soft-glow group">
+                    <CardHeader>
+                      <div className="flex items-center gap-3">
+                        <div className="h-10 w-10 rounded-md bg-neutral-100 dark:bg-neutral-800 grid place-items-center">
+                          {s.icon}
+                        </div>
+                        <span className="text-xs text-muted-foreground">Passo {i + 1}</span>
+                      </div>
+                      <CardTitle className="mt-2 text-lg">{s.title}</CardTitle>
+                      <CardDescription className="group-hover:text-foreground/80 transition-colors">{s.desc}</CardDescription>
+                    </CardHeader>
+                  </Card>
+                </Reveal>
               ))}
             </div>
           </div>
         </section>
 
         {/* Benefícios Principais */}
-        <section id="beneficios" className="mx-auto max-w-6xl px-4 md:px-6 py-12 md:py-20">
-          <h2 className="text-2xl md:text-3xl font-semibold">Benefícios principais</h2>
-    <div className="mt-8 grid md:grid-cols-3 gap-6">
+  <section id="beneficios" className="container-shell section-space">
+          <Reveal className="inline-flex items-center gap-2 text-xs uppercase tracking-wider text-muted-foreground">
+            <span className="h-1 w-6 rounded bg-primary" />
+            O que você ganha
+          </Reveal>
+          <Reveal>
+            <h2 className="mt-3 text-2xl md:text-3xl font-semibold">Benefícios principais</h2>
+          </Reveal>
+          <div className="mt-8 grid sm:grid-cols-2 md:grid-cols-3 gap-6">
             {[
-              { title: "Redução da ansiedade", desc: "Veja um panorama do seu desempenho rapidamente." },
-              { title: "Planejamento", desc: "Defina próximos passos com dados." },
-              { title: "Vantagem competitiva", desc: "Aja antes dos concorrentes." },
+              { title: "Ansiedade sob controle", desc: "Veja um panorama claro do seu desempenho minutos após a prova." },
+              { title: "Planejamento com dados", desc: "Defina seus próximos passos com base em evidências, não em achismos." },
+              { title: "Vantagem competitiva real", desc: "Aja antes dos concorrentes com informação qualificada." },
             ].map((b) => (
-              <Card key={b.title} className="group transition hover:-translate-y-0.5 hover:shadow">
-                <CardHeader>
-      <Badge variant="outline">Valor real</Badge>
-                  <CardTitle className="mt-2">{b.title}</CardTitle>
-      <CardDescription>{b.desc}</CardDescription>
-                </CardHeader>
-                <CardContent>
-      <p className="text-sm opacity-70">Micro-interações e feedback imediato para uma experiência fluida.</p>
-                </CardContent>
-              </Card>
+              <Reveal key={b.title}>
+                <Card className="group transition hover:-translate-y-0.5 hover:shadow">
+                  <CardHeader>
+                    <Badge variant="outline">Valor real</Badge>
+                    <CardTitle className="mt-2">{b.title}</CardTitle>
+                    <CardDescription>{b.desc}</CardDescription>
+                  </CardHeader>
+                  <CardContent>
+                    <ul className="text-sm opacity-80 list-disc pl-5 space-y-1">
+                      <li>Feedback imediato</li>
+                      <li>Interface simples e objetiva</li>
+                      <li>Resultados consistentes</li>
+                    </ul>
+                  </CardContent>
+                </Card>
+              </Reveal>
             ))}
           </div>
         </section>
 
-        {/* Prova Social */}
+  {/* Prova Social */}
         <section id="depoimentos" className="bg-[var(--color-background)] border-y">
-          <div className="mx-auto max-w-6xl px-4 md:px-6 py-12 md:py-20">
-      <h2 className="text-2xl md:text-3xl font-semibold">O que dizem</h2>
-            <div className="mt-8 grid md:grid-cols-3 gap-6">
+          <div className="container-shell section-space">
+      <Reveal className="inline-flex items-center gap-2 text-xs uppercase tracking-wider text-muted-foreground">
+        <span className="h-1 w-6 rounded bg-accent" />
+        Prova social
+      </Reveal>
+      <Reveal>
+        <h2 className="mt-3 text-2xl md:text-3xl font-semibold">O que dizem</h2>
+      </Reveal>
+            <div className="mt-8 grid sm:grid-cols-2 md:grid-cols-3 gap-6">
               {[
-        { name: "Ana", text: "Descobri que estava bem colocada e foquei no próximo edital.", initials: "AN" },
-        { name: "Bruno", text: "Acalmou minha ansiedade no dia seguinte da prova.", initials: "BR" },
-        { name: "Carla", text: "A estimativa ficou muito próxima do resultado oficial!", initials: "CA" },
+    { name: "Ana", role: "Aprovada TJ-SP", text: "Descobri que estava bem colocada e foquei no próximo edital.", initials: "AN" },
+    { name: "Bruno", role: "Candidato PC-DF", text: "Acalmou minha ansiedade no dia seguinte da prova.", initials: "BR" },
+    { name: "Carla", role: "TRT 2ª Região", text: "A estimativa ficou muito próxima do resultado oficial!", initials: "CA" },
               ].map((t) => (
-        <Card key={t.name} className="soft-glow">
-                  <CardHeader>
-                    <div className="flex items-center gap-3">
-                      <Avatar>
-                        <AvatarFallback>{t.initials}</AvatarFallback>
-                      </Avatar>
-                      <div>
-                        <CardTitle className="text-base">{t.name}</CardTitle>
-                        <CardDescription>Concurseira</CardDescription>
+        <Reveal key={t.name}>
+                  <Card className="soft-glow">
+                    <CardHeader>
+                      <div className="flex items-center gap-3">
+                        <Avatar>
+                          <AvatarFallback>{t.initials}</AvatarFallback>
+                        </Avatar>
+                        <div>
+                          <CardTitle className="text-base">{t.name}</CardTitle>
+                          <CardDescription>{t.role ?? "Concurseiro(a)"}</CardDescription>
+                        </div>
                       </div>
-                    </div>
-                  </CardHeader>
-                  <CardContent>
-                    <p className="opacity-80">“{t.text}”</p>
-                  </CardContent>
-                </Card>
+                    </CardHeader>
+                    <CardContent>
+                      <p className="opacity-80">“{t.text}”</p>
+                    </CardContent>
+                  </Card>
+                </Reveal>
               ))}
             </div>
             <div className="mt-10 grid sm:grid-cols-3 gap-4 text-center">
-              <div>
-                <p className="text-3xl font-semibold">95%</p>
-                <p className="opacity-70">Precisão média estimada</p>
-              </div>
-              <div>
+              <Reveal>
+    <p className="text-3xl font-semibold">95%</p>
+    <p className="opacity-70">Precisão média nas estimativas</p>
+              </Reveal>
+              <Reveal>
                 <p className="text-3xl font-semibold">10k+</p>
-                <p className="opacity-70">Respostas analisadas</p>
-              </div>
-              <div>
+    <p className="opacity-70">Respostas analisadas</p>
+              </Reveal>
+              <Reveal>
                 <p className="text-3xl font-semibold">120+</p>
-                <p className="opacity-70">Concursos avaliados</p>
-              </div>
+    <p className="opacity-70">Concursos avaliados</p>
+              </Reveal>
             </div>
           </div>
         </section>
 
         {/* FAQ */}
-  <section id="faq" className="mx-auto max-w-4xl px-4 md:px-6 py-12 md:py-20">
-          <h2 className="text-2xl md:text-3xl font-semibold">Dúvidas frequentes</h2>
+  <section id="faq" className="mx-auto max-w-4xl container-shell section-space">
+          <Reveal className="inline-flex items-center gap-2 text-xs uppercase tracking-wider text-muted-foreground">
+            <span className="h-1 w-6 rounded bg-primary" />
+            Transparência
+          </Reveal>
+          <Reveal>
+            <h2 className="mt-3 text-2xl md:text-3xl font-semibold">Dúvidas frequentes</h2>
+          </Reveal>
           <Accordion type="single" collapsible className="mt-6">
             <AccordionItem value="item-1">
               <AccordionTrigger>Como a IA estima o gabarito?</AccordionTrigger>
               <AccordionContent>
-                Cruzamos respostas coletivas em massa para identificar padrões consistentes, ponderamos por confiabilidade e simulamos cenários para estimar o gabarito provável.
+                Cruzamos respostas coletivas para identificar padrões consistentes, ponderamos por confiabilidade e simulamos cenários. O resultado é um gabarito provável que serve como base para sua classificação estimada.
               </AccordionContent>
             </AccordionItem>
             <AccordionItem value="item-2">
               <AccordionTrigger>Qual a precisão?</AccordionTrigger>
               <AccordionContent>
-                Em nossos testes iniciais, a precisão média ficou acima de 90% para provas objetivas com alta participação.
+                Em nossos testes iniciais, a precisão média ficou acima de 90% em provas objetivas com alta participação. A precisão aumenta conforme mais candidatos contribuem.
               </AccordionContent>
             </AccordionItem>
             <AccordionItem value="item-3">
               <AccordionTrigger>Meus dados ficam seguros?</AccordionTrigger>
               <AccordionContent>
-                Sim. Armazenamos respostas de forma agregada e anônima. Não compartilhamos dados pessoais.
+                Sim. Armazenamos respostas de forma agregada e anônima, sem dados pessoais. Você controla o que compartilha.
               </AccordionContent>
             </AccordionItem>
           </Accordion>
         </section>
 
         {/* CTA Final */}
-        <section className="mx-auto max-w-6xl px-4 md:px-6 py-12 md:py-20">
-          <Card className="bg-gradient-to-br from-indigo-600 to-violet-600 text-white soft-glow">
+  <section className="container-shell section-space">
+          <Reveal>
+          <Card className="bg-brand-gradient soft-glow">
             <CardHeader>
               <CardTitle className="text-2xl md:text-3xl">Pare de sofrer na espera</CardTitle>
-              <CardDescription className="text-white/90">
-                Experimente grátis e ganhe vantagem competitiva.
+              <CardDescription className="text-[color:var(--brand-foreground)]/90">
+                Tenha clareza em minutos. Experimente grátis e ganhe vantagem competitiva agora.
               </CardDescription>
             </CardHeader>
             <CardContent>
               <div className="flex flex-col sm:flex-row gap-3">
-                <Button size="lg" variant="secondary" className="text-black soft-glow">Experimente grátis</Button>
-                <Button size="lg" variant="outline" className="bg-transparent text-white border-white/60 hover:bg-white/10">Descubra seu resultado agora</Button>
+                <Button size="lg" variant="secondary" className="text-foreground soft-glow">Experimente grátis</Button>
+                <Button size="lg" variant="outline" className="bg-transparent text-[color:var(--brand-foreground)] border-[color:var(--brand-foreground)]/60 hover:bg-[color:var(--brand-foreground)]/10">Descubra seu resultado agora</Button>
               </div>
             </CardContent>
           </Card>
+          </Reveal>
         </section>
       </main>
 
       <footer className="border-t">
-        <div className="mx-auto max-w-6xl px-4 md:px-6 h-16 flex items-center justify-between text-sm">
+  <div className="container-shell h-16 flex items-center justify-between text-sm">
           <p className="opacity-70">© {new Date().getFullYear()} OlhoNoConcurso</p>
           <div className="flex items-center gap-4">
-            <a href="#" className="hover:underline">Privacidade</a>
-            <a href="#" className="hover:underline">Termos</a>
+            <a href="/privacidade" className="hover:underline">Privacidade</a>
+            <a href="/termos" className="hover:underline">Termos</a>
           </div>
         </div>
       </footer>
